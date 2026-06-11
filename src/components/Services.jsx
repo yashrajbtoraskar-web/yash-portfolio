@@ -8,6 +8,7 @@ const projects = [
     text: "Mobile-first online pharmacy platform using React & Vanilla JS. Features localStorage cart, digital prescription upload, and dynamic filters for 500+ medical SKUs. Improved page load by 25%.",
     tags: ["React", "JavaScript", "HTML", "CSS"],
     link: "https://github.com/yashrajbtoraskar-web",
+    link:👉 "https://vyaish.vercel.app/",
     period: "Mar 2026 – Apr 2026"
   },
   {
