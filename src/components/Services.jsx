@@ -33,7 +33,7 @@ const projects = [
     number: "04",
     title: "YFLIX – Netflix Mod",
     text: "Netflix-inspired streaming platform with session management, role-based access for premium users, CRUD admin panel for movie management, and modular PHP backend architecture.",
-    demo: null,
+    demo: "https://v-yflix.vercel.app/index.html",
     tags: ["HTML", "CSS", "JavaScript", "PHP", "Java"],
     link: "https://github.com/yashrajbtoraskar-web",
     period: "Jan 2024 – Feb 2024"
