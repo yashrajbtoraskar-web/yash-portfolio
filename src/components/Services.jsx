@@ -37,16 +37,16 @@ const projects = [
     tags: ["HTML", "CSS", "JavaScript", "PHP", "Java"],
     link: "https://github.com/yashrajbtoraskar-web",
     period: "Jan 2024 – Feb 2024"
-  }
+  },
   {
-  number: "05",
-  title: "YCACC Complaint Box",
-  text: "Student grievance portal with PHP & MySQL, role-based access for students and admins, complaint tracking with status timeline, and secure session-based authentication.",
-  demo: null,
-  tags: ["PHP", "MySQL", "JavaScript", "HTML", "CSS"],
-  link: "https://github.com/yashrajbtoraskar-web/YCACC-complaint-box",
-  period: "Jan 2025"
-}
+    number: "05",
+    title: "YCACC Complaint Box",
+    text: "Student grievance portal with PHP & MySQL, role-based access for students and admins, complaint tracking with status timeline, and secure session-based authentication.",
+    demo: null,
+    tags: ["PHP", "MySQL", "JavaScript", "HTML", "CSS"],
+    link: "https://github.com/yashrajbtoraskar-web/YCACC-complaint-box",
+    period: "Jan 2025"
+  }
 ];
 
 const TagCard = ({ number, title, text, demo, tags, link, period, className, aosDelay, aosType, pathLength, containerRef }) => {
@@ -95,7 +95,6 @@ const TagCard = ({ number, title, text, demo, tags, link, period, className, aos
           {text}
         </p>
 
-        {/* Live Demo link — only shown when demo URL exists */}
         {demo && (
           <a
             href={demo}
@@ -142,7 +141,7 @@ const Services = () => {
       ref={containerRef}
       className="bg-white pt-24 pb-32 px-6 md:px-12 w-full relative overflow-hidden font-sans bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:80px_80px]"
     >
-      <div className="max-w-6xl mx-auto relative md:h-[1600px]">
+      <div className="max-w-6xl mx-auto relative md:h-[2000px]">
 
         {/* Header */}
         <div data-aos="fade-up" className="md:absolute top-10 left-0 md:w-[450px] z-20 mb-16 md:mb-0">
@@ -157,14 +156,14 @@ const Services = () => {
           </p>
         </div>
 
-        {/* Desktop SVG Animated Line */}
+        {/* Desktop SVG Animated Line — extended for 5 cards */}
         <svg
-          className="hidden md:block absolute top-0 left-0 w-full h-[1600px] pointer-events-none z-0"
-          viewBox="0 0 1000 1600"
+          className="hidden md:block absolute top-0 left-0 w-full h-[2000px] pointer-events-none z-0"
+          viewBox="0 0 1000 2000"
           preserveAspectRatio="none"
         >
           <path
-            d="M 650,200 C 400,350 200,500 300,750 C 400,1000 750,950 700,1150 C 650,1350 400,1400 300,1450"
+            d="M 650,200 C 400,350 200,500 300,750 C 400,1000 750,950 700,1150 C 650,1350 400,1400 300,1550 C 200,1700 600,1750 650,1900"
             fill="none"
             stroke="#cbd5e1"
             strokeWidth="2"
@@ -172,7 +171,7 @@ const Services = () => {
           />
           <mask id="path-mask">
             <motion.path
-              d="M 650,200 C 400,350 200,500 300,750 C 400,1000 750,950 700,1150 C 650,1350 400,1400 300,1450"
+              d="M 650,200 C 400,350 200,500 300,750 C 400,1000 750,950 700,1150 C 650,1350 400,1400 300,1550 C 200,1700 600,1750 650,1900"
               fill="none"
               stroke="white"
               strokeWidth="20"
@@ -180,7 +179,7 @@ const Services = () => {
             />
           </mask>
           <path
-            d="M 650,200 C 400,350 200,500 300,750 C 400,1000 750,950 700,1150 C 650,1350 400,1400 300,1450"
+            d="M 650,200 C 400,350 200,500 300,750 C 400,1000 750,950 700,1150 C 650,1350 400,1400 300,1550 C 200,1700 600,1750 650,1900"
             fill="none"
             stroke="black"
             strokeWidth="2"
@@ -228,7 +227,8 @@ const Services = () => {
                 i === 0 ? 'md:top-[10px] md:right-[5%] lg:right-[10%] rotate-2 md:rotate-6' :
                 i === 1 ? 'md:top-[500px] md:left-[5%] lg:left-[10%] -rotate-2 md:-rotate-6' :
                 i === 2 ? 'md:top-[850px] md:right-[5%] lg:right-[15%] rotate-1 md:rotate-3' :
-                'md:top-[1250px] md:left-[15%] lg:left-[25%] -rotate-1 md:-rotate-3'
+                i === 3 ? 'md:top-[1250px] md:left-[15%] lg:left-[25%] -rotate-1 md:-rotate-3' :
+                'md:top-[1650px] md:right-[5%] lg:right-[10%] rotate-2 md:rotate-4'
               }`}
               aosType={i % 2 === 0 ? "fade-left" : "fade-right"}
               aosDelay={String((i + 1) * 100)}
@@ -240,7 +240,7 @@ const Services = () => {
           <div
             data-aos="fade-in"
             data-aos-delay="600"
-            className="hidden md:block absolute top-[1500px] left-[55%] font-['Caveat',cursive] text-3xl text-gray-600 rotate-6"
+            className="hidden md:block absolute top-[1920px] left-[45%] font-['Caveat',cursive] text-3xl text-gray-600 rotate-6"
           >
             More coming soon!
           </div>
