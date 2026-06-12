@@ -17,26 +17,27 @@ const projects = [
     text: "Full-stack career & skill recommendation system with high-efficiency backend APIs, JWT authentication, and CRUD operations managing 1,000+ records. Reduced latency by 30%.",
     demo: null,
     tags: ["Java", "PHP", "JavaScript", "MySQL", "Spring Boot"],
-    link: "https://github.com/yashrajbtoraskar-web",
-    period: "Jan 2025 – Feb 2026"
+    link: "https://github.com/yashrajbtoraskar-web/InternSphere",
+    period: "Jan 2026 – Feb 2026"
   },
   {
     number: "03",
+     title: "YFLIX – Netflix Mod",
+    text: "Netflix-inspired streaming platform with session management, role-based access for premium users, CRUD admin panel for movie management, and modular PHP backend architecture.",
+    demo: "https://v-yflix.vercel.app/index.html",
+    tags: ["HTML", "CSS", "JavaScript", "PHP", "Java"],
+    link: "https://github.com/yashrajbtoraskar-web/VYflix",
+    period: "Jan 2024 – Feb 2024"
+    
+  },
+  {
+    number: "04",
     title: "Event Sphare",
     text: "Centralized event management system with PHP & MySQL. Full-stack architecture automating manual booking by 50%, with secure authentication and optimized relational DB schema.",
     demo: null,
     tags: ["PHP", "MySQL", "Node.js", "JavaScript", "Java"],
     link: "https://github.com/yashrajbtoraskar-web",
-    period: "Jan 2025"
-  },
-  {
-    number: "04",
-    title: "YFLIX – Netflix Mod",
-    text: "Netflix-inspired streaming platform with session management, role-based access for premium users, CRUD admin panel for movie management, and modular PHP backend architecture.",
-    demo: "https://v-yflix.vercel.app/index.html",
-    tags: ["HTML", "CSS", "JavaScript", "PHP", "Java"],
-    link: "https://github.com/yashrajbtoraskar-web",
-    period: "Jan 2024 – Feb 2024"
+    period: "may 2025"
   },
   {
     number: "05",
