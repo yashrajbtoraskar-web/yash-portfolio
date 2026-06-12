@@ -38,6 +38,15 @@ const projects = [
     link: "https://github.com/yashrajbtoraskar-web",
     period: "Jan 2024 – Feb 2024"
   }
+  {
+  number: "05",
+  title: "YCACC Complaint Box",
+  text: "Student grievance portal with PHP & MySQL, role-based access for students and admins, complaint tracking with status timeline, and secure session-based authentication.",
+  demo: null,
+  tags: ["PHP", "MySQL", "JavaScript", "HTML", "CSS"],
+  link: "https://github.com/yashrajbtoraskar-web/YCACC-complaint-box",
+  period: "Jan 2025"
+}
 ];
 
 const TagCard = ({ number, title, text, demo, tags, link, period, className, aosDelay, aosType, pathLength, containerRef }) => {
