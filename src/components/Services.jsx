@@ -48,6 +48,14 @@ const projects = [
     link: "https://github.com/yashrajbtoraskar-web/YCACC-complaint-box",
     period: "Jan 2025"
   }
+  {
+    number: "06",
+    title: "V Resume Builder",
+    text: "An online resume builder built with React & Vite. Create professional resumes instantly with a clean UI, real-time preview, and easy export functionality.",
+    tags: ["React", "Vite", "JavaScript", "CSS"],
+    link: "https://github.com/yashrajbtoraskar-web/v-resume-builder",
+    period: "2026"
+  }s
 ];
 
 const TagCard = ({ number, title, text, demo, tags, link, period, className, aosDelay, aosType, pathLength, containerRef }) => {
