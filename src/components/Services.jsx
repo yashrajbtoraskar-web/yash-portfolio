@@ -1,6 +1,8 @@
 import React, { useRef, useState } from 'react';
 import { motion, useScroll, useSpring, useMotionValueEvent } from 'framer-motion';
 
+// ✅ TO ADD MORE PROJECTS: just add a new object below following the same format
+// demo: put live link or null if no demo
 const projects = [
   {
     number: "01",
@@ -22,13 +24,12 @@ const projects = [
   },
   {
     number: "03",
-     title: "YFLIX – Netflix Mod",
+    title: "YFLIX – Netflix Mod",
     text: "Netflix-inspired streaming platform with session management, role-based access for premium users, CRUD admin panel for movie management, and modular PHP backend architecture.",
     demo: "https://v-yflix.vercel.app/index.html",
     tags: ["HTML", "CSS", "JavaScript", "PHP", "Java"],
     link: "https://github.com/yashrajbtoraskar-web/VYflix",
     period: "Jan 2024 – Feb 2024"
-    
   },
   {
     number: "04",
@@ -37,7 +38,7 @@ const projects = [
     demo: null,
     tags: ["PHP", "MySQL", "Node.js", "JavaScript", "Java"],
     link: "https://github.com/yashrajbtoraskar-web",
-    period: "may 2025"
+    period: "May 2025"
   },
   {
     number: "05",
@@ -47,16 +48,43 @@ const projects = [
     tags: ["PHP", "MySQL", "JavaScript", "HTML", "CSS"],
     link: "https://github.com/yashrajbtoraskar-web/YCACC-complaint-box",
     period: "Jan 2025"
-  }
+  },
   {
     number: "06",
     title: "V Resume Builder",
     text: "An online resume builder built with React & Vite. Create professional resumes instantly with a clean UI, real-time preview, and easy export functionality.",
+    demo: "https://v-resume-builder-three.vercel.app/",
     tags: ["React", "Vite", "JavaScript", "CSS"],
     link: "https://github.com/yashrajbtoraskar-web/v-resume-builder",
     period: "2026"
-  }s
+  },
+  // ✅ ADD NEW PROJECT HERE — copy the block below, remove the comments, and fill in your details:
+  // {
+  //   number: "07",
+  //   title: "Your Project Title",
+  //   text: "Description of your project.",
+  //   demo: "https://your-live-demo-link.com",   // or null if no demo
+  //   tags: ["React", "Node.js"],
+  //   link: "https://github.com/yashrajbtoraskar-web/your-repo",
+  //   period: "Month Year"
+  // },
 ];
+
+// ✅ Card positions — automatically calculated based on index
+// Left cards: index 1, 3, 5, 7 (even index from 0 = right, odd = left)
+const getCardPosition = (i) => {
+  const topSpacing = 400; // spacing between cards in px
+  const top = i === 0 ? 10 : 350 + (i - 1) * topSpacing;
+  const isRight = i % 2 === 0;
+  const rotate = isRight ? `rotate-2 md:rotate-6` : `-rotate-2 md:-rotate-6`;
+  const side = isRight
+    ? 'md:right-[5%] lg:right-[10%]'
+    : 'md:left-[5%] lg:left-[10%]';
+  return `md:top-[${top}px] ${side} ${rotate}`;
+};
+
+// ✅ Container height auto-calculated based on number of projects
+const CONTAINER_HEIGHT = 350 + projects.length * 400;
 
 const TagCard = ({ number, title, text, demo, tags, link, period, className, aosDelay, aosType, pathLength, containerRef }) => {
   const ref = useRef(null);
@@ -85,7 +113,6 @@ const TagCard = ({ number, title, text, demo, tags, link, period, className, aos
           : 'bg-white border border-gray-200 shadow-[0_15px_40px_rgba(0,0,0,0.06)] hover:shadow-[0_20px_50px_rgba(0,0,0,0.12)]'
       }`}
     >
-      {/* Pin dot */}
       <div className="w-5 h-5 bg-gradient-to-br from-gray-300 to-gray-100 rounded-full shadow-[inset_0_2px_4px_rgba(0,0,0,0.3)] absolute top-4 border border-gray-300 z-10 flex items-center justify-center">
         <div className="w-2 h-2 bg-gray-800 rounded-full opacity-20"></div>
       </div>
@@ -144,13 +171,16 @@ const Services = () => {
   const { scrollYProgress } = useScroll({ target: containerRef, offset: ["start center", "end center"] });
   const pathLength = useSpring(scrollYProgress, { stiffness: 60, damping: 20, restDelta: 0.001 });
 
+  // SVG path points — auto scale with container height
+  const svgPath = `M 650,200 C 400,350 200,500 300,750 C 400,1000 750,950 700,1150 C 650,1350 400,1400 300,1550 C 200,1700 600,1750 650,1900 C 500,2050 300,2150 400,2300 C 500,2450 700,2500 650,${CONTAINER_HEIGHT - 100}`;
+
   return (
     <section
       id="projects"
       ref={containerRef}
       className="bg-white pt-24 pb-32 px-6 md:px-12 w-full relative overflow-hidden font-sans bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:80px_80px]"
     >
-      <div className="max-w-6xl mx-auto relative md:h-[2000px]">
+      <div className="max-w-6xl mx-auto relative" style={{ height: `${CONTAINER_HEIGHT}px` }}>
 
         {/* Header */}
         <div data-aos="fade-up" className="md:absolute top-10 left-0 md:w-[450px] z-20 mb-16 md:mb-0">
@@ -165,37 +195,18 @@ const Services = () => {
           </p>
         </div>
 
-        {/* Desktop SVG Animated Line — extended for 5 cards */}
+        {/* Desktop SVG Animated Line */}
         <svg
-          className="hidden md:block absolute top-0 left-0 w-full h-[2000px] pointer-events-none z-0"
-          viewBox="0 0 1000 2000"
+          className="hidden md:block absolute top-0 left-0 w-full pointer-events-none z-0"
+          style={{ height: `${CONTAINER_HEIGHT}px` }}
+          viewBox={`0 0 1000 ${CONTAINER_HEIGHT}`}
           preserveAspectRatio="none"
         >
-          <path
-            d="M 650,200 C 400,350 200,500 300,750 C 400,1000 750,950 700,1150 C 650,1350 400,1400 300,1550 C 200,1700 600,1750 650,1900"
-            fill="none"
-            stroke="#cbd5e1"
-            strokeWidth="2"
-            strokeDasharray="8 10"
-          />
+          <path d={svgPath} fill="none" stroke="#cbd5e1" strokeWidth="2" strokeDasharray="8 10" />
           <mask id="path-mask">
-            <motion.path
-              d="M 650,200 C 400,350 200,500 300,750 C 400,1000 750,950 700,1150 C 650,1350 400,1400 300,1550 C 200,1700 600,1750 650,1900"
-              fill="none"
-              stroke="white"
-              strokeWidth="20"
-              style={{ pathLength }}
-            />
+            <motion.path d={svgPath} fill="none" stroke="white" strokeWidth="20" style={{ pathLength }} />
           </mask>
-          <path
-            d="M 650,200 C 400,350 200,500 300,750 C 400,1000 750,950 700,1150 C 650,1350 400,1400 300,1550 C 200,1700 600,1750 650,1900"
-            fill="none"
-            stroke="black"
-            strokeWidth="2"
-            strokeDasharray="8 10"
-            mask="url(#path-mask)"
-            className="drop-shadow-sm"
-          />
+          <path d={svgPath} fill="none" stroke="black" strokeWidth="2" strokeDasharray="8 10" mask="url(#path-mask)" className="drop-shadow-sm" />
         </svg>
 
         {/* Mobile Line */}
@@ -206,24 +217,9 @@ const Services = () => {
         >
           <path d="M 2,0 L 2,100" fill="none" stroke="#cbd5e1" strokeWidth="4" strokeDasharray="4 6" vectorEffect="non-scaling-stroke" />
           <mask id="path-mask-mobile">
-            <motion.path
-              d="M 2,0 L 2,100"
-              fill="none"
-              stroke="white"
-              strokeWidth="4"
-              style={{ pathLength }}
-              vectorEffect="non-scaling-stroke"
-            />
+            <motion.path d="M 2,0 L 2,100" fill="none" stroke="white" strokeWidth="4" style={{ pathLength }} vectorEffect="non-scaling-stroke" />
           </mask>
-          <path
-            d="M 2,0 L 2,100"
-            fill="none"
-            stroke="black"
-            strokeWidth="4"
-            strokeDasharray="4 6"
-            mask="url(#path-mask-mobile)"
-            vectorEffect="non-scaling-stroke"
-          />
+          <path d="M 2,0 L 2,100" fill="none" stroke="black" strokeWidth="4" strokeDasharray="4 6" mask="url(#path-mask-mobile)" vectorEffect="non-scaling-stroke" />
         </svg>
 
         {/* Project Cards */}
@@ -232,13 +228,7 @@ const Services = () => {
             <TagCard
               key={project.number}
               {...project}
-              className={`md:absolute ${
-                i === 0 ? 'md:top-[10px] md:right-[5%] lg:right-[10%] rotate-2 md:rotate-6' :
-                i === 1 ? 'md:top-[500px] md:left-[5%] lg:left-[10%] -rotate-2 md:-rotate-6' :
-                i === 2 ? 'md:top-[850px] md:right-[5%] lg:right-[15%] rotate-1 md:rotate-3' :
-                i === 3 ? 'md:top-[1250px] md:left-[15%] lg:left-[25%] -rotate-1 md:-rotate-3' :
-                'md:top-[1650px] md:right-[5%] lg:right-[10%] rotate-2 md:rotate-4'
-              }`}
+              className={`md:absolute ${getCardPosition(i)}`}
               aosType={i % 2 === 0 ? "fade-left" : "fade-right"}
               aosDelay={String((i + 1) * 100)}
               pathLength={pathLength}
@@ -249,7 +239,8 @@ const Services = () => {
           <div
             data-aos="fade-in"
             data-aos-delay="600"
-            className="hidden md:block absolute top-[1920px] left-[45%] font-['Caveat',cursive] text-3xl text-gray-600 rotate-6"
+            className="hidden md:block absolute font-['Caveat',cursive] text-3xl text-gray-600 rotate-6"
+            style={{ top: `${CONTAINER_HEIGHT - 80}px`, left: '45%' }}
           >
             More coming soon!
           </div>
