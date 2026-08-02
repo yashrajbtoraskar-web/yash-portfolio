@@ -1,7 +1,6 @@
 import React, { useRef, useState } from 'react';
 import { motion, useScroll, useSpring, useMotionValueEvent } from 'framer-motion';
 
-// ✅ TO ADD MORE PROJECTS: just add a new object here
 const projects = [
   {
     number: "01",
@@ -57,19 +56,8 @@ const projects = [
     link: "https://github.com/yashrajbtoraskar-web/v-resume-builder",
     period: "2026"
   },
-  // ✅ ADD NEW PROJECT HERE — copy block below, remove //, fill details:
-  // {
-  //   number: "07",
-  //   title: "Your Project Title",
-  //   text: "Description of your project.",
-  //   demo: "https://your-live-demo.com", // or null
-  //   tags: ["React", "Node.js"],
-  //   link: "https://github.com/yashrajbtoraskar-web/your-repo",
-  //   period: "Month Year"
-  // },
 ];
 
-// ✅ Auto card position — no need to change this ever
 const getCardPosition = (i) => {
   const top = i === 0 ? 10 : 350 + (i - 1) * 400;
   const isRight = i % 2 === 0;
@@ -78,7 +66,6 @@ const getCardPosition = (i) => {
   return `md:top-[${top}px] ${side} ${rotate}`;
 };
 
-// ✅ Auto height — grows automatically when you add projects
 const CONTAINER_HEIGHT = 350 + projects.length * 400;
 
 const svgPath = `M 650,200 C 400,350 200,500 300,750 C 400,1000 750,950 700,1150 C 650,1350 400,1400 300,1550 C 200,1700 600,1750 650,1900 C 500,2050 300,2150 400,2300 C 500,2450 700,2500 650,${CONTAINER_HEIGHT - 100}`;
@@ -100,64 +87,20 @@ const TagCard = ({ number, title, text, demo, tags, link, period, className, aos
   });
 
   return (
-    <div
-      ref={ref}
-      data-aos={aosType || "fade-up"}
-      data-aos-delay={aosDelay}
-      className={`w-72 sm:w-80 rounded-[2rem] p-2 relative flex flex-col items-center hover:scale-[1.02] transition-all duration-700 z-10 ${className} ${
-        isActive
-          ? 'bg-[#ff2a2a] border-red-400 shadow-[0_20px_50px_rgba(255,42,42,0.4)]'
-          : 'bg-white border border-gray-200 shadow-[0_15px_40px_rgba(0,0,0,0.06)] hover:shadow-[0_20px_50px_rgba(0,0,0,0.12)]'
-      }`}
-    >
+    <div ref={ref} data-aos={aosType || "fade-up"} data-aos-delay={aosDelay} className={`w-72 sm:w-80 rounded-[2rem] p-2 relative flex flex-col items-center hover:scale-[1.02] transition-all duration-700 z-10 ${className} ${isActive ? 'bg-[#ff2a2a] border-red-400 shadow-[0_20px_50px_rgba(255,42,42,0.4)]' : 'bg-white border border-gray-200 shadow-[0_15px_40px_rgba(0,0,0,0.06)] hover:shadow-[0_20px_50px_rgba(0,0,0,0.12)]'}`}>
       <div className="w-5 h-5 bg-gradient-to-br from-gray-300 to-gray-100 rounded-full shadow-[inset_0_2px_4px_rgba(0,0,0,0.3)] absolute top-4 border border-gray-300 z-10 flex items-center justify-center">
         <div className="w-2 h-2 bg-gray-800 rounded-full opacity-20"></div>
       </div>
-
       <div className={`w-full h-full rounded-[1.5rem] mt-8 p-6 flex flex-col min-h-[260px] transition-colors duration-700 ${isActive ? 'bg-red-700/50' : 'bg-[#f4f4f4]'}`}>
-        <span className={`text-xl font-bold mb-1 font-serif italic transition-colors duration-700 ${isActive ? 'text-red-200' : 'text-gray-400'}`}>
-          {number}
-        </span>
-        <h3 className={`text-xl font-black mb-2 tracking-tight transition-colors duration-700 ${isActive ? 'text-white' : 'text-gray-900'}`}>
-          {title}
-        </h3>
-        <p className={`text-xs font-bold mb-2 transition-colors duration-700 ${isActive ? 'text-red-300' : 'text-gray-400'}`}>
-          {period}
-        </p>
-        <p className={`text-xs leading-relaxed font-medium mb-3 transition-colors duration-700 ${isActive ? 'text-red-100' : 'text-gray-500'}`}>
-          {text}
-        </p>
-
-        {demo && (
-          
-            href={demo}
-            target="_blank"
-            rel="noreferrer"
-            className={`text-xs font-bold mb-3 inline-flex items-center gap-1 transition-colors duration-700 ${isActive ? 'text-yellow-200 hover:text-yellow-100' : 'text-blue-500 hover:text-blue-700'}`}
-          >
-            👉 Live Demo
-          </a>
-        )}
-
+        <span className={`text-xl font-bold mb-1 font-serif italic transition-colors duration-700 ${isActive ? 'text-red-200' : 'text-gray-400'}`}>{number}</span>
+        <h3 className={`text-xl font-black mb-2 tracking-tight transition-colors duration-700 ${isActive ? 'text-white' : 'text-gray-900'}`}>{title}</h3>
+        <p className={`text-xs font-bold mb-2 transition-colors duration-700 ${isActive ? 'text-red-300' : 'text-gray-400'}`}>{period}</p>
+        <p className={`text-xs leading-relaxed font-medium mb-3 transition-colors duration-700 ${isActive ? 'text-red-100' : 'text-gray-500'}`}>{text}</p>
+        {demo && (<a href={demo} target="_blank" rel="noreferrer" className={`text-xs font-bold mb-3 inline-flex items-center gap-1 transition-colors duration-700 ${isActive ? 'text-yellow-200 hover:text-yellow-100' : 'text-blue-500 hover:text-blue-700'}`}>👉 Live Demo</a>)}
         <div className="flex flex-wrap gap-1 mt-auto">
-          {tags.map(tag => (
-            <span
-              key={tag}
-              className={`px-2 py-0.5 rounded-full text-[10px] font-bold transition-colors duration-700 ${isActive ? 'bg-white/20 text-white' : 'bg-gray-200 text-gray-600'}`}
-            >
-              {tag}
-            </span>
-          ))}
+          {tags.map(tag => (<span key={tag} className={`px-2 py-0.5 rounded-full text-[10px] font-bold transition-colors duration-700 ${isActive ? 'bg-white/20 text-white' : 'bg-gray-200 text-gray-600'}`}>{tag}</span>))}
         </div>
-
-        
-          href={link}
-          target="_blank"
-          rel="noreferrer"
-          className={`mt-3 text-xs font-black underline transition-colors duration-700 ${isActive ? 'text-white' : 'text-[#ff2a2a]'}`}
-        >
-          View on GitHub →
-        </a>
+        <a href={link} target="_blank" rel="noreferrer" className={`mt-3 text-xs font-black underline transition-colors duration-700 ${isActive ? 'text-white' : 'text-[#ff2a2a]'}`}>View on GitHub →</a>
       </div>
     </div>
   );
@@ -169,31 +112,16 @@ const Services = () => {
   const pathLength = useSpring(scrollYProgress, { stiffness: 60, damping: 20, restDelta: 0.001 });
 
   return (
-    <section
-      id="projects"
-      ref={containerRef}
-      className="bg-white pt-24 pb-32 px-6 md:px-12 w-full relative overflow-hidden font-sans bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:80px_80px]"
-    >
+    <section id="projects" ref={containerRef} className="bg-white pt-24 pb-32 px-6 md:px-12 w-full relative overflow-hidden font-sans bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:80px_80px]">
       <div className="max-w-6xl mx-auto relative" style={{ height: `${CONTAINER_HEIGHT}px` }}>
 
         <div data-aos="fade-up" className="md:absolute top-10 left-0 md:w-[450px] z-20 mb-16 md:mb-0">
-          <div className="inline-block border border-gray-300 rounded-full px-5 py-1.5 text-sm text-gray-600 font-bold mb-8 shadow-sm bg-white">
-            My Projects
-          </div>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 leading-[1.1] mb-6 tracking-tight">
-            Projects that showcase real-world impact & technical depth
-          </h2>
-          <p className="text-gray-500 text-base md:text-lg max-w-sm font-medium leading-relaxed">
-            Each project was built with a focus on performance, security, and seamless user experience.
-          </p>
+          <div className="inline-block border border-gray-300 rounded-full px-5 py-1.5 text-sm text-gray-600 font-bold mb-8 shadow-sm bg-white">My Projects</div>
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-gray-900 leading-[1.1] mb-6 tracking-tight">Projects that showcase real-world impact & technical depth</h2>
+          <p className="text-gray-500 text-base md:text-lg max-w-sm font-medium leading-relaxed">Each project was built with a focus on performance, security, and seamless user experience.</p>
         </div>
 
-        <svg
-          className="hidden md:block absolute top-0 left-0 w-full pointer-events-none z-0"
-          style={{ height: `${CONTAINER_HEIGHT}px` }}
-          viewBox={`0 0 1000 ${CONTAINER_HEIGHT}`}
-          preserveAspectRatio="none"
-        >
+        <svg className="hidden md:block absolute top-0 left-0 w-full pointer-events-none z-0" style={{ height: `${CONTAINER_HEIGHT}px` }} viewBox={`0 0 1000 ${CONTAINER_HEIGHT}`} preserveAspectRatio="none">
           <path d={svgPath} fill="none" stroke="#cbd5e1" strokeWidth="2" strokeDasharray="8 10" />
           <mask id="path-mask">
             <motion.path d={svgPath} fill="none" stroke="white" strokeWidth="20" style={{ pathLength }} />
@@ -201,11 +129,7 @@ const Services = () => {
           <path d={svgPath} fill="none" stroke="black" strokeWidth="2" strokeDasharray="8 10" mask="url(#path-mask)" className="drop-shadow-sm" />
         </svg>
 
-        <svg
-          className="md:hidden absolute top-0 left-[50%] -translate-x-1/2 w-4 h-[100%] pointer-events-none z-0"
-          viewBox="0 0 4 100"
-          preserveAspectRatio="none"
-        >
+        <svg className="md:hidden absolute top-0 left-[50%] -translate-x-1/2 w-4 h-[100%] pointer-events-none z-0" viewBox="0 0 4 100" preserveAspectRatio="none">
           <path d="M 2,0 L 2,100" fill="none" stroke="#cbd5e1" strokeWidth="4" strokeDasharray="4 6" vectorEffect="non-scaling-stroke" />
           <mask id="path-mask-mobile">
             <motion.path d="M 2,0 L 2,100" fill="none" stroke="white" strokeWidth="4" style={{ pathLength }} vectorEffect="non-scaling-stroke" />
@@ -215,23 +139,9 @@ const Services = () => {
 
         <div className="flex flex-col gap-8 md:gap-12 items-center md:block relative z-10 w-full pt-4 md:pt-0 pb-12 md:pb-0">
           {projects.map((project, i) => (
-            <TagCard
-              key={project.number}
-              {...project}
-              className={`md:absolute ${getCardPosition(i)}`}
-              aosType={i % 2 === 0 ? "fade-left" : "fade-right"}
-              aosDelay={String((i + 1) * 100)}
-              pathLength={pathLength}
-              containerRef={containerRef}
-            />
+            <TagCard key={project.number} {...project} className={`md:absolute ${getCardPosition(i)}`} aosType={i % 2 === 0 ? "fade-left" : "fade-right"} aosDelay={String((i + 1) * 100)} pathLength={pathLength} containerRef={containerRef} />
           ))}
-
-          <div
-            data-aos="fade-in"
-            data-aos-delay="600"
-            className="hidden md:block absolute font-['Caveat',cursive] text-3xl text-gray-600 rotate-6"
-            style={{ top: `${CONTAINER_HEIGHT - 80}px`, left: '45%' }}
-          >
+          <div data-aos="fade-in" data-aos-delay="600" className="hidden md:block absolute font-['Caveat',cursive] text-3xl text-gray-600 rotate-6" style={{ top: `${CONTAINER_HEIGHT - 80}px`, left: '45%' }}>
             More coming soon!
           </div>
         </div>
