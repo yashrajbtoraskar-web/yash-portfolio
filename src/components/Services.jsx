@@ -58,7 +58,7 @@ const projects = [
   },
     {
     number: "07",
-    title: "vPlacementIQ",
+    title: "PlacementIQ",
     text: "ML-powered student placement prediction system. RandomForest model trained on 600 records, FastAPI + SQLite backend, React 18 + Vite frontend, PDF diagnostic reports, and dual student/admin dashboards with KPI metrics.",
     demo: null,
     tags: ["React", "FastAPI", "Python", "Scikit-Learn", "SQLite", "Tailwind CSS", "Pandas", "Matplotlib"],
