@@ -56,6 +56,15 @@ const projects = [
     link: "https://github.com/yashrajbtoraskar-web/v-resume-builder",
     period: "2026"
   },
+    {
+    number: "07",
+    title: "vPlacementIQ",
+    text: "ML-powered student placement prediction system. RandomForest model trained on 600 records, FastAPI + SQLite backend, React 18 + Vite frontend, PDF diagnostic reports, and dual student/admin dashboards with KPI metrics.",
+    demo: null,
+    tags: ["React", "FastAPI", "Python", "Scikit-Learn", "SQLite", "Tailwind CSS", "Pandas", "Matplotlib"],
+    link: "https://github.com/yashrajbtoraskar-web/student-placement-prediction",
+    period: "Oct 2025 – Dec 2025"
+  },
 ];
 
 const CARD_POSITIONS = [
